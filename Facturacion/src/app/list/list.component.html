@@ -1,0 +1,39 @@
+<p-table [value]="lists">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Codigo</th>
+            <th>Carrera</th>
+            <th>Materia</th>
+            <th>Paralelo</th>
+            <th>Horas</th>
+            <th>Aula</th>
+            <th>Facultad</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-lists>
+        <tr>
+            <td>{{lists.codmat}}</td>
+            <td>{{lists.carrera}}</td>
+            <td>{{lists.materia}}</td>
+            <td>{{lists.paralelo}}</td>
+            <td>{{lists.horas}}</td>
+            <td>{{lists.aula}}</td>
+            <td>{{lists.facultad}}</td>
+            <!-- <td>{{lists.ubicacion}}</td>
+            <td>{{lists.funcion}}</td>
+            <td>{{lists.est}}</td>
+            <td>{{lists.nroSesiones}}</td>
+            <td>{{lists.lunes}}</td>
+            <td>{{lists.martes}}</td>
+            <td>{{lists.miercoles}}</td>
+            <td>{{lists.jueves}}</td>
+            <td>{{lists.viernes}}</td>
+            <td>{{lists.sabado}}</td>
+            <td>{{lists.hSimul}}</td>
+            <td>{{lists.fechaI}}</td>
+            <td>{{lists.fechaF}}</td>
+            <td>{{lists.horarioF}}</td>
+            <td>{{lists.codcar}}</td> -->
+        </tr>
+    </ng-template>
+</p-table>
