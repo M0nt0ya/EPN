@@ -1,5 +1,5 @@
 export interface IList {
-    codmat: string;
+    /*codmat: string;
     materia: string;
     paralelo: string;
     horas: string;
@@ -20,5 +20,8 @@ export interface IList {
     horarioF: string;
     codcar: string;
     carrera: string;
-    facultad: string;
+    facultad: string;*/
+
+    id: string;
+    title: string;
 }

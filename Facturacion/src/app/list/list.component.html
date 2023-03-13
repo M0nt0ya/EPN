@@ -1,39 +1,111 @@
-<p-table [value]="lists">
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Codigo</th>
-            <th>Carrera</th>
-            <th>Materia</th>
-            <th>Paralelo</th>
-            <th>Horas</th>
-            <th>Aula</th>
-            <th>Facultad</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-lists>
-        <tr>
-            <td>{{lists.codmat}}</td>
-            <td>{{lists.carrera}}</td>
-            <td>{{lists.materia}}</td>
-            <td>{{lists.paralelo}}</td>
-            <td>{{lists.horas}}</td>
-            <td>{{lists.aula}}</td>
-            <td>{{lists.facultad}}</td>
-            <!-- <td>{{lists.ubicacion}}</td>
-            <td>{{lists.funcion}}</td>
-            <td>{{lists.est}}</td>
-            <td>{{lists.nroSesiones}}</td>
-            <td>{{lists.lunes}}</td>
-            <td>{{lists.martes}}</td>
-            <td>{{lists.miercoles}}</td>
-            <td>{{lists.jueves}}</td>
-            <td>{{lists.viernes}}</td>
-            <td>{{lists.sabado}}</td>
-            <td>{{lists.hSimul}}</td>
-            <td>{{lists.fechaI}}</td>
-            <td>{{lists.fechaF}}</td>
-            <td>{{lists.horarioF}}</td>
-            <td>{{lists.codcar}}</td> -->
-        </tr>
-    </ng-template>
-</p-table>
+<p-card>
+
+    <p-menubar [model]="items">
+        <button pButton label="Salir" icon="pi pi-power-off"
+            class="p-button-rounded p-button-danger"></button>
+    </p-menubar>
+    <p-card>
+        <p-toolbar styleClass="mb-4 gap-5">
+        <ng-template pTemplate="left">
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder="Search..." />
+            </span>
+        </ng-template>
+        <ng-template pTemplate="right">
+            <button pButton pRipple label="New" icon="pi pi-plus"
+                class="p-button-success mr-1"></button>
+        </ng-template>
+    </p-toolbar>
+
+    <p-table #dt [value]="lists" [rows]="5" [paginator]="true"
+        [globalFilterFields]="['name','country.name','representative.name','status']" [rowHover]="true"
+        dataKey="id" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas."
+        [showCurrentPageReport]="true">
+        <ng-template pTemplate="header">
+
+            <tr>
+                <th>
+                </th>
+                <th pSortableColumn="Code">Codigo <p-sortIcon field="Code"></p-sortIcon></th>
+                <th pSortableColumn="category">Carrera <p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="category">Materia <p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="category">Paralelo <p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="price">Horas <p-sortIcon field="price"></p-sortIcon></th>
+                <th pSortableColumn="name">Aula <p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="category">Facultad <p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="category">Ubicacion <p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="category">Funcion <p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="inventoryStatus">Estado <p-sortIcon
+                        field="inventoryStatus"></p-sortIcon></th>
+                <!--<th pSortableColumn="price">Numero de Sesiones <p-sortIcon field="price"></p-sortIcon></th>
+<th pSortableColumn="category">Lunes <p-sortIcon field="category"></p-sortIcon></th>
+<th pSortableColumn="category">Martes <p-sortIcon field="category"></p-sortIcon></th>
+<th pSortableColumn="category">Miercoles<p-sortIcon field="category"></p-sortIcon></th>
+<th pSortableColumn="category">Jueves <p-sortIcon field="category"></p-sortIcon></th>
+<th pSortableColumn="category">Viernes <p-sortIcon field="category"></p-sortIcon></th>
+<th pSortableColumn="category">Sabado <p-sortIcon field="category"></p-sortIcon></th>
+<th pSortableColumn="category">HSimul <p-sortIcon field="category"></p-sortIcon></th>
+<th pSortableColumn="category">Fecha Ingreso <p-sortIcon field="category"></p-sortIcon></th>
+<th pSortableColumn="category">Fecha Final <p-sortIcon field="category"></p-sortIcon></th>
+<th pSortableColumn="category">Horario Final <p-sortIcon field="category"></p-sortIcon></th>
+<th pSortableColumn="Code">Codigo Carrera <p-sortIcon field="Code"></p-sortIcon></th>-->
+                <th>Editar</th>
+                <th>Borrar</th>
+            </tr>
+        </ng-template>
+
+
+        <ng-template pTemplate="body" let-lists>
+            <tr>
+                <td></td>
+                <td>{{lists.id}}</td>
+                <td>{{lists.id}}</td>
+                <td>{{lists.id}}</td>
+                <td>{{lists.id}}</td>
+                <td>{{lists.id}}</td>
+                <td>{{lists.title}}</td>
+                <td>{{lists.title}}</td>
+                <td>{{lists.title}}</td>
+                <td>{{lists.title}}</td>
+                <td>{{lists.title}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil"
+                        class="p-button-rounded p-button-success p-mr-2"></button>
+                </td>
+                <td>
+                    <button pButton pRipple icon="pi pi-trash"
+                        class="p-button-rounded p-button-danger"></button>
+                </td>
+                <!-- <td>{{lists.codmat}}</td>
+<td>{{lists.carrera}}</td>
+<td>{{lists.materia}}</td>
+<td>{{lists.paralelo}}</td>
+<td>{{lists.horas}}</td>
+<td>{{lists.aula}}</td>
+<td>{{lists.facultad}}</td>
+<td>{{lists.ubicacion}}</td>
+<td>{{lists.funcion}}</td>
+<td>{{lists.est}}</td>
+<td>{{lists.nroSesiones}}</td>
+<td>{{lists.lunes}}</td>
+<td>{{lists.martes}}</td>
+<td>{{lists.miercoles}}</td>
+<td>{{lists.jueves}}</td>
+<td>{{lists.viernes}}</td>
+<td>{{lists.sabado}}</td>
+<td>{{lists.hSimul}}</td>
+<td>{{lists.fechaI}}</td>
+<td>{{lists.fechaF}}</td>
+<td>{{lists.horarioF}}</td>
+<td>{{lists.codcar}}</td>-->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                En total hay {{lists ? lists.length : 0 }} entradas.
+            </div>
+        </ng-template>
+    </p-table>
+</p-card>
+</p-card>
