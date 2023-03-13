@@ -37,7 +37,12 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { MenubarModule } from 'primeng/menubar';
+import { DockModule } from 'primeng/dock';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { PickListModule } from 'primeng/picklist';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
+import {MenuModule} from 'primeng/menu';
 
 
 @NgModule({
@@ -46,6 +51,11 @@ import { MenubarModule } from 'primeng/menubar';
     ListComponent,
   ],
   imports: [
+    MenuModule,
+    
+    KeyFilterModule,
+    PickListModule,
+    DockModule,
     TabMenuModule,
     MenubarModule,
     BrowserAnimationsModule,
@@ -82,7 +92,8 @@ import { MenubarModule } from 'primeng/menubar';
     HttpClientModule,
     TableModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    ScrollPanelModule
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]

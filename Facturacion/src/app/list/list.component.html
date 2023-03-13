@@ -1,111 +1,197 @@
-<p-card>
-
-    <p-menubar [model]="items">
-        <button pButton label="Salir" icon="pi pi-power-off"
-            class="p-button-rounded p-button-danger"></button>
-    </p-menubar>
-    <p-card>
-        <p-toolbar styleClass="mb-4 gap-5">
-        <ng-template pTemplate="left">
-            <span class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" placeholder="Search..." />
-            </span>
-        </ng-template>
-        <ng-template pTemplate="right">
-            <button pButton pRipple label="New" icon="pi pi-plus"
-                class="p-button-success mr-1"></button>
-        </ng-template>
-    </p-toolbar>
-
-    <p-table #dt [value]="lists" [rows]="5" [paginator]="true"
-        [globalFilterFields]="['name','country.name','representative.name','status']" [rowHover]="true"
-        dataKey="id" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas."
-        [showCurrentPageReport]="true">
-        <ng-template pTemplate="header">
-
-            <tr>
-                <th>
-                </th>
-                <th pSortableColumn="Code">Codigo <p-sortIcon field="Code"></p-sortIcon></th>
-                <th pSortableColumn="category">Carrera <p-sortIcon field="category"></p-sortIcon></th>
-                <th pSortableColumn="category">Materia <p-sortIcon field="category"></p-sortIcon></th>
-                <th pSortableColumn="category">Paralelo <p-sortIcon field="category"></p-sortIcon></th>
-                <th pSortableColumn="price">Horas <p-sortIcon field="price"></p-sortIcon></th>
-                <th pSortableColumn="name">Aula <p-sortIcon field="category"></p-sortIcon></th>
-                <th pSortableColumn="category">Facultad <p-sortIcon field="category"></p-sortIcon></th>
-                <th pSortableColumn="category">Ubicacion <p-sortIcon field="category"></p-sortIcon></th>
-                <th pSortableColumn="category">Funcion <p-sortIcon field="category"></p-sortIcon></th>
-                <th pSortableColumn="inventoryStatus">Estado <p-sortIcon
-                        field="inventoryStatus"></p-sortIcon></th>
-                <!--<th pSortableColumn="price">Numero de Sesiones <p-sortIcon field="price"></p-sortIcon></th>
-<th pSortableColumn="category">Lunes <p-sortIcon field="category"></p-sortIcon></th>
-<th pSortableColumn="category">Martes <p-sortIcon field="category"></p-sortIcon></th>
-<th pSortableColumn="category">Miercoles<p-sortIcon field="category"></p-sortIcon></th>
-<th pSortableColumn="category">Jueves <p-sortIcon field="category"></p-sortIcon></th>
-<th pSortableColumn="category">Viernes <p-sortIcon field="category"></p-sortIcon></th>
-<th pSortableColumn="category">Sabado <p-sortIcon field="category"></p-sortIcon></th>
-<th pSortableColumn="category">HSimul <p-sortIcon field="category"></p-sortIcon></th>
-<th pSortableColumn="category">Fecha Ingreso <p-sortIcon field="category"></p-sortIcon></th>
-<th pSortableColumn="category">Fecha Final <p-sortIcon field="category"></p-sortIcon></th>
-<th pSortableColumn="category">Horario Final <p-sortIcon field="category"></p-sortIcon></th>
-<th pSortableColumn="Code">Codigo Carrera <p-sortIcon field="Code"></p-sortIcon></th>-->
-                <th>Editar</th>
-                <th>Borrar</th>
-            </tr>
-        </ng-template>
-
-
-        <ng-template pTemplate="body" let-lists>
-            <tr>
-                <td></td>
-                <td>{{lists.id}}</td>
-                <td>{{lists.id}}</td>
-                <td>{{lists.id}}</td>
-                <td>{{lists.id}}</td>
-                <td>{{lists.id}}</td>
-                <td>{{lists.title}}</td>
-                <td>{{lists.title}}</td>
-                <td>{{lists.title}}</td>
-                <td>{{lists.title}}</td>
-                <td>{{lists.title}}</td>
-                <td>
-                    <button pButton pRipple icon="pi pi-pencil"
-                        class="p-button-rounded p-button-success p-mr-2"></button>
-                </td>
-                <td>
-                    <button pButton pRipple icon="pi pi-trash"
-                        class="p-button-rounded p-button-danger"></button>
-                </td>
-                <!-- <td>{{lists.codmat}}</td>
-<td>{{lists.carrera}}</td>
-<td>{{lists.materia}}</td>
-<td>{{lists.paralelo}}</td>
-<td>{{lists.horas}}</td>
-<td>{{lists.aula}}</td>
-<td>{{lists.facultad}}</td>
-<td>{{lists.ubicacion}}</td>
-<td>{{lists.funcion}}</td>
-<td>{{lists.est}}</td>
-<td>{{lists.nroSesiones}}</td>
-<td>{{lists.lunes}}</td>
-<td>{{lists.martes}}</td>
-<td>{{lists.miercoles}}</td>
-<td>{{lists.jueves}}</td>
-<td>{{lists.viernes}}</td>
-<td>{{lists.sabado}}</td>
-<td>{{lists.hSimul}}</td>
-<td>{{lists.fechaI}}</td>
-<td>{{lists.fechaF}}</td>
-<td>{{lists.horarioF}}</td>
-<td>{{lists.codcar}}</td>-->
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="summary">
-            <div class="p-d-flex p-ai-center p-jc-between">
-                En total hay {{lists ? lists.length : 0 }} entradas.
+<div class="p-d-flex p-jc-center p-ai-center filter__card">
+        <form id="form" (submit)="cargarDatos(cedula.value)">
+          <div class="p-fluid form__filter">
+            <div class="p-field">
+              <span class="p-float-label">
+                <input #cedula type="text" pInputText />
+                <label for="cedula">Cedula</label>
+              </span>
             </div>
-        </ng-template>
-    </p-table>
-</p-card>
+            <div class="p-field">
+              <button class="p-button-rounded" type="submit" pButton>Buscar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+<p-card>
+    <p-divider align="center" type="dashed">
+        <b><p-image src="https://economia.epn.edu.ec/images/img/EPN_logo_big.png" alt="Image" width="150"></p-image>
+        </b>
+    </p-divider>
+    <!-- <p-menubar [model]="items">
+        <button pButton label="Salir" icon="pi pi-power-off" class="p-button-rounded p-button-danger"></button>
+    </p-menubar><br> -->
+
+
+    <div align="center">
+        <p-card [style]="{'width': '70rem', 'margin-bottom': '10em'}">
+            <p-toolbar styleClass="mb-4 gap-5">
+                <ng-template pTemplate="left">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal(getEventValue($event), 'contains')"
+                            placeholder="Buscar" /></span>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <button pButton pRipple label="Añadir" icon="pi pi-plus" class="p-button-success mr-1"></button>
+                </ng-template><br>
+            </p-toolbar>
+            <p-table #dt [value]="lists" [rows]="4" [paginator]="true" [rowsPerPageOptions]="[4,8,12]"
+                [globalFilterFields]="['codmat','carrera','materia','paralelo','horas','aula','facultad','ubicacion','funcion','est','nroSesiones','lunes','martes','miercoles','jueves','viernes','sabado','hSimul','fechaI','fechaF','horarioF','codcar']"
+                [rowHover]="true" dataKey="id"
+                currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas."
+                [showCurrentPageReport]="true">
+
+
+                <ng-template pTemplate="header">
+
+
+                    <tr>
+                        <th>
+                            <pre class="mt-3">      Codigo         </pre>
+                        </th>
+
+                        <th>
+                            <pre class="mt-3">      Carrera         </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Materia         </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Paralelo        </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Horas         </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Aula          </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Facultad          </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Ubicacion       </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Funcion         </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Estado          </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      #Sesiones       </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Lunes       </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Martes         </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Miercoles          </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Jueves          </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Viernes         </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Sabado          </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      HSimul           </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Fecha Ingreso         </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Fecha Final         </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Horario Final       </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">      Codigo Carrerar            </pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">Editar</pre>
+                        </th>
+                        <th>
+                            <pre class="mt-3">Borrar</pre>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th><p-columnFilter type="text" field="codmat"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="carrera"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="materia"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="paralelo"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="horas"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="aula"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="facultad"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="ubicacion"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="funcion"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="est"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="nroSesiones"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="lunes"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="martes"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="miercoles"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="jueves"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="viernes"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="sabado"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="hSimul"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="fechaI"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="fechaF"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="horarioF"></p-columnFilter></th>
+                        <th><p-columnFilter type="text" field="codcar"></p-columnFilter></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+
+
+                <ng-template pTemplate="body" let-lists>
+                    <tr>
+                        <td>{{lists.codmat}}</td>
+                        <td>{{lists.carrera}}</td>
+                        <td>{{lists.materia}}</td>
+                        <td>{{lists.paralelo}}</td>
+                        <td>{{lists.horas}}</td>
+                        <td>{{lists.aula}}</td>
+                        <td>{{lists.facultad}}</td>
+                        <td>{{lists.ubicacion}}</td>
+                        <td>{{lists.funcion}}</td>
+                        <td>{{lists.est}}</td>
+                        <td>{{lists.nroSesiones}}</td>
+                        <td>{{lists.lunes}}</td>
+                        <td>{{lists.martes}}</td>
+                        <td>{{lists.miercoles}}</td>
+                        <td>{{lists.jueves}}</td>
+                        <td>{{lists.viernes}}</td>
+                        <td>{{lists.sabado}}</td>
+                        <td>{{lists.hSimul}}</td>
+                        <td>{{lists.fechaI}}</td>
+                        <td>{{lists.fechaF}}</td>
+                        <td>{{lists.horarioF}}</td>
+                        <td>{{lists.codcar}}</td>
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                class="p-button-rounded p-button-success p-mr-2"></button>
+                        </td>
+                        <td>
+                            <button pButton pRipple icon="pi pi-trash"
+                                class="p-button-rounded p-button-danger"></button>
+                        </td>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En total hay {{lists ? lists.length : 0 }} entradas.
+                    </div>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </div>
 </p-card>
