@@ -41,6 +41,9 @@ import { DockModule } from 'primeng/dock';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { PickListModule } from 'primeng/picklist';
 import { KeyFilterModule } from 'primeng/keyfilter';
+import { FormsModule} from '@angular/forms';
+import {TooltipModule} from 'primeng/tooltip';
+
 
 import {MenuModule} from 'primeng/menu';
 
@@ -51,8 +54,9 @@ import {MenuModule} from 'primeng/menu';
     ListComponent,
   ],
   imports: [
+    TooltipModule,
     MenuModule,
-    
+    FormsModule,
     KeyFilterModule,
     PickListModule,
     DockModule,

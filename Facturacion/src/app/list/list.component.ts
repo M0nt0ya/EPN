@@ -13,8 +13,8 @@ export class ListComponent {
   httpClient: any;
   lists: IList[] = [];
   items: MenuItem[] = [];
-  cedul!: string;
-  
+  id!: string;
+
   constructor(private listHttpService: listHttpServiceService) {
   }
 
@@ -27,14 +27,14 @@ export class ListComponent {
   ngOnInit(): void {
 
 
-    // this.getList();
+  // this.getList();
 
 
-    //   this.items = [
-    //     {label: 'Perfil', icon: 'pi pi-fw pi-user'},
-    //     {label: 'Calendario', icon: 'pi pi-fw pi-calendar'},
-    //     {label: 'Notificaciones', icon: 'pi pi-fw pi-comment'},
-    //     {label: 'Configuracion', icon: 'pi pi-fw pi-cog'}
+    // this.items = [
+    //   { label: 'Perfil', icon: 'pi pi-fw pi-user' },
+    //   { label: 'Calendario', icon: 'pi pi-fw pi-calendar' },
+    //   { label: 'Notificaciones', icon: 'pi pi-fw pi-comment' },
+    //   { label: 'Configuracion', icon: 'pi pi-fw pi-cog' }
     // ];
   }
 
@@ -44,13 +44,11 @@ export class ListComponent {
   //       this.lists = response;
   //     });
   // }
-  
-  cargarDatos(cedula: string) {
-    this.listHttpService.getOne(cedula).subscribe(
+
+  cedula(id: string, year:string, num:string) {
+    this.listHttpService.getOne(id, year, num).subscribe(
       (response: IList[]) => {
         this.lists = response;
       });
   }
 }
-
-
